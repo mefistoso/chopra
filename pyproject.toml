@@ -27,6 +27,6 @@ include = ["chopra*"]
 # you would also need to specify the 'where' key:
 # where = ["src"]
 
-[tool.setuptools]
-# 1. Tell Setuptools to look in the 'chopra' directory for packages
-#package-dir = {"" = "chopra"}
+[tool.setuptools.package-data]
+# For the package 'chopra', include files matching this pattern
+chopra = ["data_files/*.txt"]
