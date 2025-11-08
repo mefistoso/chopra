@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import importlib.resources as res
 import random
+from importlib.resources import files
 
 # Basic config options -- change as needed
 SCIENTIST_FILE_PATH = "scientist.txt"
@@ -25,15 +25,15 @@ def build_quote():
     """
     Build quote/sentence by randomly sampling the globally-specified files.
     """
-    with res.path("chopra.data_files", SCIENTIST_FILE_PATH) as path:
+    with files("chopra.data_files", SCIENTIST_FILE_PATH) as path:
         scientist = get_random_line(path)
-    with res.path("chopra.data_files", VERB_FILE_PATH) as path:
+    with files("chopra.data_files", VERB_FILE_PATH) as path:
         verb1, verb2, verb3 = get_unique_lines(path, 3)
-    with res.path("chopra.data_files", NOUN_FILE_PATH) as path:
+    with files("chopra.data_files", NOUN_FILE_PATH) as path:
         noun1, noun2, noun3, noun4, noun5 = get_unique_lines(path, 5)
-    with res.path("chopra.data_files", ADJECTIVE_FILE_PATH) as path:
+    with files("chopra.data_files", ADJECTIVE_FILE_PATH) as path:
         adjective1, adjective2, adjective3, adjective4, adjective5 = get_unique_lines(path, 5)
-    with res.path("chopra.data_files", SENTENCE_FILE_PATH) as path:
+    with files("chopra.data_files", SENTENCE_FILE_PATH) as path:
         chopraline = get_random_line(path)
     chopraline = chopraline.format(
         verb1=verb1, verb2=verb2, verb3=verb3,
