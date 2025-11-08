@@ -1,0 +1,32 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chopra"
+version = "6.6.6"
+dependencies = [
+    "sopel",
+]
+# ... other project metadata
+
+[project.entry-points."sopel.plugins"]
+# The format is: <plugin_name> = <package_name>.<module_path>:<function_name>
+# However, for Sopel, the standard format only needs to point to the module:
+chopra = "chopra.sopel_chopra"
+
+[tool.setuptools.packages.find]
+# 1. Include ONLY packages whose names start with 'chopra'
+include = ["chopra*"]
+# 2. You can optionally exclude common directories, though the 'include' is often enough
+# exclude = ["tests*", "docs*"]
+
+# If your 'chopra' directory is NOT at the root but inside a 'src' folder,
+# you would also need to specify the 'where' key:
+# where = ["src"]
+
+[tool.setuptools]
+# 1. Tell Setuptools to look in the 'chopra' directory for packages
+#package-dir = {"" = "chopra"}
